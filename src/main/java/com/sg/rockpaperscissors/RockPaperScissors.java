@@ -47,10 +47,10 @@ public class RockPaperScissors {
             
             int computerChoice = (1 + (int)(Math.random() * ((3 - 1) + 1)));
             
-            System.out.println("Round: " + i);
-            System.out.println("User: " + intUserChoice);
-            System.out.println("Comp: " + computerChoice);
-            
+//            System.out.println("Round: " + i);
+//            System.out.println("User: " + intUserChoice);
+//            System.out.println("Comp: " + computerChoice);
+//            
             if (intUserChoice == computerChoice) {
                 System.out.println("It's a tie!");
                 ties++;
@@ -69,7 +69,7 @@ public class RockPaperScissors {
             } 
             
             if (intUserChoice == 1 && computerChoice == 2) {
-                System.out.println("Smothered. You lose :(");
+                System.out.println("Smothered. LOSAH :(");
                 losses++;
             }
             if (intUserChoice == 2 && computerChoice == 3) {
@@ -88,8 +88,15 @@ public class RockPaperScissors {
         System.out.println("Losses: " + losses);
         System.out.println("ties: " + ties);
         System.out.println("---------------");
-        System.out.println("Play Again? Yes (y) No (n)?");
+        System.out.println("Play Again? Yes? No?");
         
+        String playAgain = myScanner.nextLine();    
         
+        if (playAgain.equals("yes") || playAgain.equals("YES") || playAgain.equals("Yes")) {
+            RockPaperScissors.main(null);
+        } else {
+            System.out.println("Thanks for playing!");
+        }
+     
     }
 }
