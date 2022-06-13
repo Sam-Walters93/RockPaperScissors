@@ -25,6 +25,7 @@ public class RockPaperScissors {
         System.out.println("How many rounds of rock paper scissors would you like to play? Please enter a value between 1 and 10");
         String roundInput = myScanner.nextLine();
         
+        
         try {
             intRoundInput = Integer.parseInt(roundInput);
         } 
@@ -32,56 +33,61 @@ public class RockPaperScissors {
             System.out.println("Sorry, input is invalid.");
             System.out.println(ex);
         }
-        
-        for (int i = intRoundInput; i > 0; i--) {
-           System.out.println("Please make a numerical selection: 1. Rock 2. Paper 3. Scissors");
-           String userChoice = myScanner.nextLine();
+            
+        if (intRoundInput > 0 && intRoundInput < 11) {
+                
+            for (int i = intRoundInput; i > 0; i--) {
+                System.out.println("Please make a numerical selection: 1. Rock 2. Paper 3. Scissors");
+                String userChoice = myScanner.nextLine();
           
-            try {
-             intUserChoice = Integer.parseInt(userChoice);
-            } 
-            catch (Exception ex) {
-             System.out.println("Sorry, input is invalid.");
-             System.out.println(ex);
+                try {
+                    intUserChoice = Integer.parseInt(userChoice);
+                } 
+                catch (Exception ex) {
+                    System.out.println("Sorry, input is invalid.");
+                    System.out.println(ex);
+                }
+
+                int computerChoice = (1 + (int)(Math.random() * ((3 - 1) + 1)));
+
+    //            System.out.println("Round: " + i);
+    //            System.out.println("User: " + intUserChoice);
+    //            System.out.println("Comp: " + computerChoice);
+    //            
+                if (intUserChoice == computerChoice) {
+                    System.out.println("It's a tie!");
+                    ties++;
+                } 
+                if (intUserChoice == 1 && computerChoice == 3) {
+                    System.out.println("Crushed 'em. You Win!");
+                    wins++;
+                }
+                if (intUserChoice == 2 && computerChoice == 1) {
+                    System.out.println("Smothered. You Win!");
+                    wins++;
+                }
+                if (intUserChoice == 3 && computerChoice == 2) {
+                    System.out.println("Sliced to ribbons. You Win!");
+                    wins++;
+                } 
+
+                if (intUserChoice == 1 && computerChoice == 2) {
+                    System.out.println("Smothered. LOSAH :(");
+                    losses++;
+                }
+                if (intUserChoice == 2 && computerChoice == 3) {
+                    System.out.println("Snip Snip. You lose!");
+                    losses++;
+                }
+                if (intUserChoice == 3 && computerChoice == 1) {
+                    System.out.println("CRONCH. Loser");
+                    losses++;
+                }
+
             }
+                
+        }
             
-            int computerChoice = (1 + (int)(Math.random() * ((3 - 1) + 1)));
-            
-//            System.out.println("Round: " + i);
-//            System.out.println("User: " + intUserChoice);
-//            System.out.println("Comp: " + computerChoice);
-//            
-            if (intUserChoice == computerChoice) {
-                System.out.println("It's a tie!");
-                ties++;
-            } 
-            if (intUserChoice == 1 && computerChoice == 3) {
-                System.out.println("Crushed 'em. You Win!");
-                wins++;
-            }
-            if (intUserChoice == 2 && computerChoice == 1) {
-                System.out.println("Smothered. You Win!");
-                wins++;
-            }
-            if (intUserChoice == 3 && computerChoice == 2) {
-                System.out.println("Sliced to ribbons. You Win!");
-                wins++;
-            } 
-            
-            if (intUserChoice == 1 && computerChoice == 2) {
-                System.out.println("Smothered. LOSAH :(");
-                losses++;
-            }
-            if (intUserChoice == 2 && computerChoice == 3) {
-                System.out.println("Snip Snip. You lose!");
-                losses++;
-            }
-            if (intUserChoice == 3 && computerChoice == 1) {
-                System.out.println("CRONCH. Loser");
-                losses++;
-            }
-            
-        }  
         System.out.println("---------------");
         System.out.println("Game Over!");
         System.out.println("Wins: " + wins);
@@ -97,6 +103,5 @@ public class RockPaperScissors {
         } else {
             System.out.println("Thanks for playing!");
         }
-     
     }
 }
